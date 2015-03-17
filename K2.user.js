@@ -689,13 +689,13 @@ jQueryInclude(function () {
    * @param Scheme
    * @constructor
    */
-  var PendingSchoolAppList = function (AllIDs, Gap, fYear, Scheme) {
+  var PendingSchoolAppList = function (AllIDs, Gap, fYear, Scheme, KeyPrefix) {
     var AppCount = 0;
     jQ.each(AllIDs, function (Index, Value) {
       if (Value.length > 0) {
-        AppCount = Number(localStorage.getItem('SchCode-' + fYear + '_' + Value));
+        AppCount = Number(localStorage.getItem(KeyPrefix + Value));
         for (var i = 0, Page = 1; i < AppCount; i += 5, Page++) {
-          setTimeout(function () {
+          setTimeout(function (Page) {
             AjaxFunnel(GetSchAppList, Value, Scheme, Page, fYear);
           }, Gap * (Index + i));
         }
@@ -795,7 +795,7 @@ jQueryInclude(function () {
         if (ForStep === "Prepare") {
           localStorage.setItem('KeyPrefix', 'SchAppNo-' + fYear + '_');
         } else {
-          PendingSchoolAppList(AllIDs, Gap, fYear, "K1");
+          PendingSchoolAppList(AllIDs, Gap, fYear, "K1", 'SchCode-' + fYear + '_');
         }
         break;
 
@@ -811,7 +811,7 @@ jQueryInclude(function () {
         if (ForStep === "Prepare") {
           localStorage.setItem('KeyPrefix', 'SchAppNo-' + fYear + '_');
         } else {
-          PendingSchoolAppList(AllIDs, Gap, fYear, "K1R");
+          PendingSchoolAppList(AllIDs, Gap, fYear, "K1R", 'SchCode-' + fYear + '_');
         }
         break;
 
@@ -827,7 +827,7 @@ jQueryInclude(function () {
         if (ForStep === "Prepare") {
           localStorage.setItem('KeyPrefix', 'SchK2AppNo-' + fYear + '_');
         } else {
-          PendingSchoolAppList(AllIDs, Gap, fYear, "K2");
+          PendingSchoolAppList(AllIDs, Gap, fYear, "K2", 'SchK2Code-' + fYear + '_');
         }
         break;
 
@@ -843,7 +843,7 @@ jQueryInclude(function () {
         if (ForStep === "Prepare") {
           localStorage.setItem('KeyPrefix', 'SchK2AppNo-' + fYear + '_');
         } else {
-          PendingSchoolAppList(AllIDs, Gap, fYear, "K2U");
+          PendingSchoolAppList(AllIDs, Gap, fYear, "K2U", 'SchK2Code-' + fYear + '_');
         }
         break;
 
