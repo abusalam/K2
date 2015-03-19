@@ -523,7 +523,8 @@ jQueryInclude(function () {
       data: {
         'year': fYear,
         'status': '10042',
-        'schcd': ClgCode
+        'schcd': ClgCode,
+        'pending':1
       }
     }).done(function (data) {
       try {
@@ -688,6 +689,7 @@ jQueryInclude(function () {
    * @param fYear
    * @param Scheme
    * @constructor
+   * @param KeyPrefix
    */
   var PendingSchoolAppList = function (AllIDs, Gap, fYear, Scheme, KeyPrefix) {
     var AppCount = 0;
@@ -695,9 +697,7 @@ jQueryInclude(function () {
       if (Value.length > 0) {
         AppCount = Number(localStorage.getItem(KeyPrefix + Value));
         for (var i = 0, Page = 1; i < AppCount; i += 5, Page++) {
-          setTimeout(function (Page) {
-            AjaxFunnel(GetSchAppList, Value, Scheme, Page, fYear);
-          }, Gap * (Index + i));
+          setTimeout(AjaxFunnel(GetSchAppList, Value, Scheme, Page, fYear), Gap * (Index + i));
         }
       }
     });
