@@ -6,7 +6,7 @@
 // @grant         none
 // @downloadURL   https://github.com/abusalam/K2/raw/master/K2.user.js
 // @updateURL     https://github.com/abusalam/K2/raw/master/K2.user.js
-// @version       1.2.0
+// @version       1.2.1
 // @icon          http://www.gravatar.com/avatar/43f0ea57b814fbdcb3793ca3e76971cf
 // ==/UserScript==
 
@@ -82,7 +82,7 @@ jQueryInclude(function () {
       + '<option value="SchK2AppListU">13. School K2 Applicants(Upgradation)</option>'
       + '<option value="Finalize">14. Finalize Applications</option>'
       + '<option value="AddToSanction">15. Add To Sanction Order</option>'
-      + '<option value="RejectApp">16. Reject Applications</option>'
+      + '<option value="RejectApp">16. Mark as Bank Failure Case</option>'
       + '</select>';
 
   if (jQ("#intra_body_area").is(":visible")) {
